@@ -1,7 +1,7 @@
 import  fetchMeteors  from "../repositories/meteors.repository.js";
 
-export default async function getFormattedMeteors() {
-  const meteors = await fetchMeteors();
+export default async function getFormattedMeteors(startDate,endDate) {
+  const meteors = await fetchMeteors(startDate,endDate);
 
   const formattedMeteors = Object.keys(meteors).flatMap((date) =>
     meteors[date].map((meteor) => ({
