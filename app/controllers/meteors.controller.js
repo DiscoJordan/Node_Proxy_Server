@@ -4,23 +4,39 @@ import { validateDate } from "../utils/utils.js";
 const router = express.Router();
 
 router.get("/meteors", async (req, res, next) => {
-  const dates = validateDate(req.query?.date);  
-  const count = req.query?.count;
-  const wereDangerousMeteors = req.query?.wereDangerousMeteors;
-
+  const dates = validateDate(req?.query?.date);  
+  const {count,wereDangerousMeteors} = req?.query;
+ 
   try {
-    const formattedMeteors = await getFormattedMeteors(
+    const response = await getFormattedMeteors(
       dates,
       count,
       wereDangerousMeteors
     );
     
-    res.send(
-      formattedMeteors
+    res.status(200).send(
+        response
     );
   } catch (error) {
     next(error);
   }
 });
+
+router.get("/meteors/layout", async (req, res, next) => {
+    const dates = validateDate(req?.query?.date);  
+    const {count,wereDangerousMeteors} = req?.query;
+   
+    try {
+      const response = await getFormattedMeteors(
+        dates,
+        count,
+        wereDangerousMeteors
+      );
+      
+      res.render('meteors.njk', { formattedMeteors: response });
+    } catch (error) {
+      next(error);
+    }
+  });
 
 export default router;
