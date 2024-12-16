@@ -16,3 +16,4 @@ export default async function fetchImages() {
   );
   return response.data.photos;
 }
+
