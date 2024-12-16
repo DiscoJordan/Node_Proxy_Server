@@ -1,0 +1,45 @@
+html, body { font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;}
+
+.title {
+   text-align: center;
+  }
+  
+  .table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-collapse: collapse;
+    
+  }
+  
+
+  td,th{
+    padding: 10px;
+    min-width: 180px;
+    text-align: left;
+    
+  }
+
+  tr:nth-child(2n){
+   background-color: bisque;
+  }
+  tr{
+    border-bottom: 1px solid black;
+  }
+ 
+  thead{
+    background-color: burlywood;
+  
+  }
+  
+ 
+
+  .dangerous{
+    background-color: rgb(255, 172, 189);
+  }
+  .safe{
+    background-color: rgb(187, 255, 196);
+  }
