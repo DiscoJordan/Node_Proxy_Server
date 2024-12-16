@@ -1,9 +1,10 @@
 import express from "express";
 import getFormattedMeteors from "../services/meteors.service.js";
 import { validateDate } from "../utils/utils.js";
+import queryValidation from "../middleware/queryValidation.js";
 const router = express.Router();
 
-router.get("/meteors", async (req, res, next) => {
+router.get("/meteors",queryValidation, async (req, res, next) => {
   const dates = validateDate(req?.query?.date);  
   const {count,wereDangerousMeteors} = req?.query;
  
@@ -22,7 +23,7 @@ router.get("/meteors", async (req, res, next) => {
   }
 });
 
-router.get("/meteors/layout", async (req, res, next) => {
+router.get("/meteors/layout", queryValidation, async (req, res, next) => {
     const dates = validateDate(req?.query?.date);  
     const {count,wereDangerousMeteors} = req?.query;
    
@@ -38,5 +39,6 @@ router.get("/meteors/layout", async (req, res, next) => {
       next(error);
     }
   });
+ 
 
 export default router;
