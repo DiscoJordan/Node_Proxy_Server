@@ -1,9 +1,13 @@
-import  fetchMeteors  from "../repositories/meteors.repository.js";
+import fetchMeteors from "../repositories/meteors.repository.js";
 
-export default async function getFormattedMeteors(startDate,endDate) {
-  const meteors = await fetchMeteors(startDate,endDate);
-
-  const formattedMeteors = Object.keys(meteors).flatMap((date) =>
+export default async function getFormattedMeteors(
+  [startDate, endDate],
+  count,
+  wereDangerousMeteors
+) {
+  const meteors = await fetchMeteors(startDate, endDate);
+  let queryResponse = {};
+  let formattedMeteors = Object.keys(meteors).flatMap((date) =>
     meteors[date].map((meteor) => ({
       id: meteor.id,
       name: meteor.name,
@@ -16,5 +20,18 @@ export default async function getFormattedMeteors(startDate,endDate) {
         meteor.close_approach_data[0]?.relative_velocity?.kilometers_per_second,
     }))
   );
-  return formattedMeteors
+
+  if (count === "true") {
+    queryResponse.count = formattedMeteors.length;
+  }
+  if (wereDangerousMeteors === "true") {
+    queryResponse.wereDangerousMeteors = formattedMeteors.some(
+      (meteor) => meteor.is_potentially_hazardous_asteroid
+    );
+  }
+
+
+  return count === "true" || wereDangerousMeteors === "true"
+    ? queryResponse
+    : formattedMeteors;
 }
