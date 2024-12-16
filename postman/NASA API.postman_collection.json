@@ -92,6 +92,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "RecentImage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/rover",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"rover"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
