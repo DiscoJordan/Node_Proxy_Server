@@ -1,4 +1,4 @@
-export default function queryValidation(schema) {
+export default function queryValidation(schema,type) {
   return (req, res, next) => {
     const validation = schema.validate(req.query);
 
