@@ -12,8 +12,7 @@ nunjucks.configure("app/views", {
   express: app,
 });
 
-app.use(express.static('public'));
-
+app.use(express.static("public"));
 
 app.use(meteorsController);
 app.use(roversController);
@@ -22,7 +21,6 @@ app.use(errorHandler);
 app.use((req, res) => {
   res.status(404).send("404, Page not found");
 });
-
 
 app.listen(PORT || 4000, () => {
   console.log("Server is running on port: " + PORT || 4000);

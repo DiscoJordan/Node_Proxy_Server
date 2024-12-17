@@ -22,12 +22,11 @@ router.post("/rover-image", async (req, res, next) => {
   try {
     const response = await getRecentImage();
 
-    
     if (response.img_src) {
-        res.render("roverImage.njk", { response });
-      } else {
-        res.status(200).send({photo: 'there are no any photos'});
-      }
+      res.render("roverImage.njk", { response });
+    } else {
+      res.status(200).send({ photo: "there are no any photos" });
+    }
   } catch (error) {
     next(error);
   }

@@ -10,41 +10,41 @@ router.get(
   queryValidation(meteorsQuerySchema, "query"),
   async (req, res, next) => {
     const dates = validateDate(req?.query?.date);
-    const { count, wereDangerousMeteors } = req?.query;
+    const { count, wereDangerousMeteors } = req?.query || null;
 
     try {
       const response = await getFormattedMeteors(
         dates,
         count,
-        wereDangerousMeteors
+        wereDangerousMeteors,
       );
 
       res.status(200).send(response);
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 router.get(
   "/meteors/layout",
-  queryValidation(meteorsQuerySchema,"query"),
+  queryValidation(meteorsQuerySchema, "query"),
   async (req, res, next) => {
     const dates = validateDate(req?.query?.date);
-    const { count, wereDangerousMeteors } = req?.query;
+    const { count, wereDangerousMeteors } = req?.query || null;
 
     try {
       const response = await getFormattedMeteors(
         dates,
         count,
-        wereDangerousMeteors
+        wereDangerousMeteors,
       );
 
       res.render("meteors.njk", { formattedMeteors: response });
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 export default router;
