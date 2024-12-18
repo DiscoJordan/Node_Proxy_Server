@@ -3,7 +3,7 @@ import fetchMeteors from "../repositories/meteors.repository.js";
 export default async function getFormattedMeteors(
   [startDate, endDate],
   count,
-  wereDangerousMeteors
+  wereDangerousMeteors,
 ) {
   const meteors = await fetchMeteors(startDate, endDate);
   let queryResponse = {};
@@ -18,7 +18,7 @@ export default async function getFormattedMeteors(
         meteor.close_approach_data[0]?.close_approach_date_full,
       relative_velocity_kps:
         meteor.close_approach_data[0]?.relative_velocity?.kilometers_per_second,
-    }))
+    })),
   );
 
   if (count === "true") {
@@ -26,10 +26,9 @@ export default async function getFormattedMeteors(
   }
   if (wereDangerousMeteors === "true") {
     queryResponse.wereDangerousMeteors = formattedMeteors.some(
-      (meteor) => meteor.is_potentially_hazardous_asteroid
+      (meteor) => meteor.is_potentially_hazardous_asteroid,
     );
   }
-
 
   return count === "true" || wereDangerousMeteors === "true"
     ? queryResponse

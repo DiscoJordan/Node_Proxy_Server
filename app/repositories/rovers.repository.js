@@ -12,8 +12,7 @@ export default async function fetchImages() {
         camera: "fhaz",
         api_key: API_KEY,
       },
-    }
+    },
   );
   return response.data.photos;
 }
-
