@@ -1,14 +1,12 @@
-export const validateDate = (queryDateArr) => {
-  let dateArr = ["2024-11-17", "2024-11-18"];
-
-  dateArr[0] = queryDateArr?.length === 2 ? queryDateArr[0] : "2024-11-17";
-
-  dateArr[1] =
-    queryDateArr?.length === 2
-      ? queryDateArr[1]
-      : queryDateArr?.length === 1
-        ? queryDateArr
-        : "2024-11-18";
-
-  return dateArr;
+export const validateDate = (queryDate) => {
+    let dateArr = ["2024-11-17", "2024-11-18"];
+    if (Array.isArray(queryDate)) {
+        if (queryDate.length === 2) {
+            dateArr = [queryDate[0], queryDate[1]];
+        }
+    }
+    else if (typeof queryDate === "string") {
+        dateArr = ["2024-11-17", queryDate];
+    }
+    return dateArr;
 };
