@@ -2,19 +2,19 @@
   "name": "proxy-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "precommit": "lint-staged",
-    "start": " cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 npm run fix && npm run lint && npm run format && node index.js",
-    "lint": " eslint ./app",
-    "fix": " eslint --fix ./app",
-    "format": "prettier -w ./app",
+    "start": " npx tsc && npm run fix && npm run lint && npm run format &&  cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 node index.js",
+    "lint": " eslint ",
+    "fix": " eslint --fix ",
+    "format": "prettier -w ",
     "test": " npm run lint && npm run format",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "eslint --fix",
       "prettier --write"
     ],
@@ -32,6 +32,8 @@
   },
   "homepage": "https://github.com/DiscoJordan/Node_Proxy_Server#readme",
   "dependencies": {
+    "@sentry/node": "^8.47.0",
+    "@sentry/profiling-node": "^8.47.0",
     "axios": "^1.7.9",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
@@ -42,12 +44,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@types/express": "^5.0.0",
+    "@types/nunjucks": "^3.2.6",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.13.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.11",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
   }
 }
