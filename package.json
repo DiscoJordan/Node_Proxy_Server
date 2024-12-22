@@ -7,9 +7,9 @@
   "scripts": {
     "precommit": "lint-staged",
     "start": " npx tsc && npm run fix && npm run lint && npm run format &&  cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 node index.js",
-    "lint": " eslint ./app",
-    "fix": " eslint --fix ./app",
-    "format": "prettier -w ./app",
+    "lint": " eslint ",
+    "fix": " eslint --fix ",
+    "format": "prettier -w ",
     "test": " npm run lint && npm run format",
     "prepare": "husky install"
   },
@@ -32,6 +32,8 @@
   },
   "homepage": "https://github.com/DiscoJordan/Node_Proxy_Server#readme",
   "dependencies": {
+    "@sentry/node": "^8.47.0",
+    "@sentry/profiling-node": "^8.47.0",
     "axios": "^1.7.9",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
