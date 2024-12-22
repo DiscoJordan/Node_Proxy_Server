@@ -1,5 +1,6 @@
 import express from "express";
 import getRecentImage from "../services/rovers.service.js";
+
 const router = express.Router();
 
 router.post("/rover", async (req, res, next) => {
