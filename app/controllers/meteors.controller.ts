@@ -3,6 +3,7 @@ import getFormattedMeteors from "../services/meteors.service.js";
 import queryValidation from "../middleware/queryValidation.js";
 import { meteorsQuerySchema } from "../schemas/meteors.schema.js";
 import { parseMeteorIntervalDates } from "../utils/utils.js";
+
 const router = express.Router();
 
 interface MeteorsQuery {

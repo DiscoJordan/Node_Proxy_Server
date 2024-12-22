@@ -33,6 +33,8 @@
   },
   "homepage": "https://github.com/DiscoJordan/Node_Proxy_Server#readme",
   "dependencies": {
+    "@sentry/node": "^8.47.0",
+    "@sentry/profiling-node": "^8.47.0",
     "axios": "^1.7.9",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
