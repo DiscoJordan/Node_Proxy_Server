@@ -1,5 +1,5 @@
 export const validateDate = (
-  queryDate: string | [string, string],
+  queryDate?: string | string[],
 ): [string, string] => {
   let dateArr: [string, string] = ["2024-11-17", "2024-11-18"];
 

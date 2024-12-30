@@ -1,1 +1,1 @@
-export default { semi: true };
+export default { semi: true, endOfLine: "lf" };

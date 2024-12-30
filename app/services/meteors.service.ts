@@ -1,5 +1,6 @@
 import fetchMeteors from "../repositories/meteors.repository.js";
 import { IFormattedMeteor } from "../types/meteors.types.js";
+import { validateDate } from "../utils/utils.js";
 
 interface IQueryResponse {
   count?: number;
@@ -7,10 +8,11 @@ interface IQueryResponse {
 }
 
 export default async function getFormattedMeteors(
-  [startDate, endDate]: string[],
+  dates: string | string[] | undefined,
   count: string | undefined,
   wereDangerousMeteors: string | undefined,
 ) {
+  const [startDate, endDate] = validateDate(dates);
   const meteors = await fetchMeteors(startDate, endDate);
   const queryResponse: IQueryResponse = {};
   const formattedMeteors: IFormattedMeteor[] = Object.keys(meteors).flatMap(

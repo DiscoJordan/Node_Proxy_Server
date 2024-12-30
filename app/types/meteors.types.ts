@@ -16,6 +16,7 @@ export interface CloseEarthObject {
   close_approach_data: CloseApproachData[];
   is_sentry_object: boolean;
 }
+
 export interface EstimatedDiameter {
   meters: {
     estimated_diameter_min: number;
