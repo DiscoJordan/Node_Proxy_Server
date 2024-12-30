@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Schema } from "joi";
 
-type RequestType = "query" | "params" | "body";
+type RequestType = "query" | "body";
 export default function queryValidation(schema: Schema, type: RequestType) {
   return (req: Request, res: Response, next: NextFunction) => {
     const validation = schema.validate(req[type]);
