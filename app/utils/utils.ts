@@ -1,4 +1,6 @@
-export const refactorDate = (queryDate?: unknown): [string, string] => {
+export const parseMeteorIntervalDates = (
+  queryDate?: unknown,
+): [string, string] => {
   const defaultStartDatgIfQueryIsNotFilled = "2024-11-17";
   const defaultEndDateIfQueryIsNotFilled = "2024-11-18";
 

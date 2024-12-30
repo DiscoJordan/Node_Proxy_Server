@@ -2,7 +2,7 @@ import express from "express";
 import getFormattedMeteors from "../services/meteors.service.js";
 import queryValidation from "../middleware/queryValidation.js";
 import { meteorsQuerySchema } from "../schemas/meteors.schema.js";
-import { refactorDate } from "../utils/utils.js";
+import { parseMeteorIntervalDates } from "../utils/utils.js";
 const router = express.Router();
 
 interface MeteorsQuery {
@@ -15,7 +15,7 @@ router.get(
   "/meteors",
   queryValidation(meteorsQuerySchema, "query"),
   async (req, res, next) => {
-    const dates = refactorDate(req?.query?.date);
+    const dates = parseMeteorIntervalDates(req?.query?.date);
     const { count, wereDangerousMeteors }: MeteorsQuery = req?.query || null;
 
     try {
@@ -36,7 +36,7 @@ router.get(
   "/meteors/layout",
   queryValidation(meteorsQuerySchema, "query"),
   async (req, res, next) => {
-    const dates = refactorDate(req?.query?.date);
+    const dates = parseMeteorIntervalDates(req?.query?.date);
     const { count, wereDangerousMeteors }: MeteorsQuery = req?.query || null;
     try {
       const response = await getFormattedMeteors(

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "precommit": "lint-staged",
-    "start": " npx tsc && npm run fix && npm run lint && npm run format &&  cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 node index.js",
+    "build": "npx tsc ",
+    "start": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 node ./bundle/index.js",
     "lint": " eslint ",
     "fix": " eslint --fix ",
     "format": "prettier -w ",
